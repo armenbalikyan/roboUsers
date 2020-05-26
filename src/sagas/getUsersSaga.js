@@ -5,15 +5,8 @@ import { getUsers } from "../api/Api";
 
 function* getUsersSaga() {
     const response = yield call(getUsers);
-    // function getFields(input, field1) {
-    //     let output = [];
-    //     for (let i=0; i < input.length ; ++i)
-    //         output.push(input[i][field1]);
-    //     return output;
-    // }
-    // console.log(response.data);
-    
     const data = response.data;
+    
     if (response.status !== 200) {
         yield take(getUsersFailure)
     }
